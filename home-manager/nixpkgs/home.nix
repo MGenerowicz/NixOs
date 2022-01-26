@@ -21,12 +21,36 @@
  #  programs.bat.enable = true;
 
   home.packages = with pkgs; [
-  ripgrep ripgrep-all
-  fd
-  bat
-  du-dust
-  exa
-  git
+    ripgrep  ripgrep-all  # better grep + find
+    fd                    # better find
+    bat                   # better cat
+    du-dust               # better du
+    exa                   # better ls
+    tldr                  # alternative to drinking from `man` fire hose 
+    
+    github-cli # git and git-lfs enabled below
+    
+    
+    
+    rlwrap      # add readline capabilities to crappy shells
+    mosh        # more robust alternative to ssh
+    
+    
+    
+    # Productivity
+    
+    libreoffice-fresh # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
+    jetbrains.pycharm-community # Python IDE with complete set of tools for productive development with Python programming language
+    
+      #browser
+     brave # Privacy-oriented browser for Desktop and Laptop computers
+        
+    
 ];
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
+
 
 }
