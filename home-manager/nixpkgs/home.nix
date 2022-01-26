@@ -26,11 +26,15 @@
   exa                   # better ls
   tldr                  # alternative to drinking from `man` fire hose
 
-  
+  # E-Mail
+  thunderbird
   
   # Browsers
   brave
-  #Firefox
+  #firefox
+  
+  # Office Packages
+  libreoffice-fresh
   
   ];
   
