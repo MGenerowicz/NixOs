@@ -19,7 +19,19 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
+  
+  fd                    # better find
+  bat                   # better cat
+  du-dust               # better du
+  exa                   # better ls
+  tldr                  # alternative to drinking from `man` fire hose
 
+  
+  
+  # Browsers
+  brave
+  #Firefox
+  
   ];
   
 }
