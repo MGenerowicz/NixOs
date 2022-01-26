@@ -18,24 +18,15 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  home.packages = with pkgs; [
-  
-  fd                    # better find
-  bat                   # better cat
-  du-dust               # better du
-  exa                   # better ls
-  tldr                  # alternative to drinking from `man` fire hose
+ #  programs.bat.enable = true;
 
-  # E-Mail
-  thunderbird
-  
-  # Browsers
-  brave
-  #firefox
-  
-  # Office Packages
-  libreoffice-fresh
-  
-  ];
-  
+  home.packages = with pkgs; [
+  ripgrep ripgrep-all
+  fd
+  bat
+  du-dust
+  exa
+  git
+];
+
 }
