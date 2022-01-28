@@ -18,9 +18,10 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
- #  programs.bat.enable = true;
+
 
   home.packages = with pkgs; [
+   
     ripgrep  ripgrep-all  # better grep + find
     fd                    # better find
     bat                   # better cat
@@ -29,23 +30,43 @@
     tldr                  # alternative to drinking from `man` fire hose 
     
     github-cli # git and git-lfs enabled below
-    
-    
-    
+     
     rlwrap      # add readline capabilities to crappy shells
     mosh        # more robust alternative to ssh
-    
-    
-    
+     
+    neofetch
+      
     # Productivity
     
-    libreoffice-fresh # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
-    jetbrains.pycharm-community # Python IDE with complete set of tools for productive development with Python programming language
+     libreoffice-fresh # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
+     
+     atlassian-jira
+     
+     #White-Noise / Background noise
+     blanket
+     
+    # jetbrains.pycharm-community # Python IDE with complete set of tools for productive development with Python programming language
+   
+    #Communication
+     signal-desktop
+     discord
     
-      #browser
+    #browser
      brave # Privacy-oriented browser for Desktop and Laptop computers
-        
-    
+     vivaldi
+     opera
+    #General Networking / Security / Audit    
+
+   #Portscaners
+    nmap
+
+   #Network Sniffers
+    dsniff
+    wireshark 
+   
+
+   #Password Management
+    bitwarden
 ];
   programs.git = {
     enable = true;
