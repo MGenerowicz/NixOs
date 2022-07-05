@@ -8,6 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+  #  ./ledger-nano.nix
+
     ];
 
 nix = {
@@ -34,11 +37,13 @@ nix = {
    networking.interfaces.enp3s0.useDHCP = true;
    networking.interfaces.wlp2s0.useDHCP = true;
    networking.networkmanager.enable = true;
-
+   
+  # security.polkit.enable
 
 
   # Set your time zone.
    time.timeZone = "Europe/Bucharest";
+
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -47,6 +52,7 @@ nix = {
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -54,6 +60,7 @@ nix = {
   #   keyMap = "us";
   # };
 
+  services.teamviewer.enable = true;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -71,29 +78,46 @@ nix = {
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+
   # Enable sound.
    sound.enable = true;
    hardware.pulseaudio.enable = true;
 
+#  hardware.pulseaudio.enable = true;
+ # hardware.bluetooth.enable = true;
+
+   
+   #Enable Bluetooth
+  hardware.bluetooth.enable = true; 
+  services.blueman.enable = true;  
   # Enable touchpad support (enabled default in most desktopManager).
    services.xserver.libinput.enable = true;
-
+   
+   #Custom Enbabled 
+    hardware.ledger.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
      users.users.generowicz = {
      isNormalUser = true;
-     extraGroups = [ "wheel""networkmanager" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel""networkmanager""plugdev" ]; # Enable ‘sudo’ for the user.
    };
   
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
    nixpkgs.config.allowUnfree = true;
-   
-   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     firefox
-   ];
 
+environment.systemPackages = with pkgs; [
+     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+     gparted
+     wget
+     git 
+     firefox
+     git 
+     emacs 
+    ];
+
+
+   
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -112,6 +136,12 @@ nix = {
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  # security.polkit.enable = true;
+
+
+
+  boot.blacklistedKernelModules = [ "nouveau" ];
+  hardware.nvidiaOptimus.disable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -119,7 +149,8 @@ nix = {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.11"; # Did you read the comment?
+ # nixpkgs.config.allowUnfree = true;
+
+  system.stateVersion = "22.05"; # Did you read the comment?
 
 }
-
